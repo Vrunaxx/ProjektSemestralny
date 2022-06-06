@@ -15,9 +15,9 @@ namespace ProjektSemestralny.Windows
     /// <summary>
     /// Interaction logic for Menage.xaml
     /// </summary>
-    public partial class Menage
+    public partial class Manage
     {
-        public Menage()
+        public Manage()
         {
             this.InitializeComponent();
         }

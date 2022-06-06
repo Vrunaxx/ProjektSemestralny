@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Fluent.Ribbon" Version="9.0.4" />
   </ItemGroup>
 
 </Project>

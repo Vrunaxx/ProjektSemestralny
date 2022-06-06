@@ -25,12 +25,22 @@ namespace ProjektSemestralny
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Book(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Movies(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Games(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Orders(object sender, RoutedEventArgs e)
         {
 
         }

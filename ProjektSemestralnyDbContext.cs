@@ -22,5 +22,5 @@ namespace ProjektSemestralny
         public virtual IDbSet<Game> Games { get; set; }
 
         public virtual IDbSet<Book> Books { get; set; }
-
+    }
 }

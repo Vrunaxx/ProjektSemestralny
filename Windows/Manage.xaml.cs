@@ -10,12 +10,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProjektSemestralny.Windows
+namespace ProjektSemestralny
 {
     /// <summary>
     /// Interaction logic for Menage.xaml
     /// </summary>
-    public partial class Manage
+    public partial class Manage: Window
     {
         public Manage()
         {
@@ -24,8 +24,7 @@ namespace ProjektSemestralny.Windows
 
         private void InitializeComponent()
         {
-            // Initialization code goes here.
-            throw new NotImplementedException();
+            
         }
     }
 }

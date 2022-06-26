@@ -187,6 +187,11 @@ namespace ProjektSemestralny
             GameList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
         }
 
-
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow manage = new MainWindow();
+            this.Visibility = Visibility.Hidden;
+            manage.Show();
+        }
     }
 }

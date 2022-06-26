@@ -18,7 +18,7 @@
         <Fluent:Ribbon VerticalAlignment="Center">
 
             <!--Tabs-->
-            <Fluent:RibbonTabItem Header="Home">
+            <Fluent:RibbonTabItem Width="1">
                 <Fluent:RibbonGroupBox Header="Edit" Width="195">
                     <Fluent:Button Header="Save" Width="99" Click="SaveButton_Click"
                             />
@@ -67,6 +67,7 @@
         <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="594,7,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSA" HorizontalAlignment="Left" Margin="594,37,0,0" Grid.Row="2" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="120"/>
         <DatePicker x:Name="txtDoR" HorizontalAlignment="Left" Margin="603,147,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="51" Click="Home_Click"/>
 
 
 

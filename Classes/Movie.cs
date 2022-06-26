@@ -12,10 +12,12 @@ namespace ProjektSemestralny.Classes
         public Guid Id { get; set; }
 
         public string Title { get; set; }
+        
+        public string Autor { get; set; }
 
         public string Category { get; set; }
 
-        public float Price { get; set; }
+        public decimal Price { get; set; }
 
         public DateTime DateOrRelease { get; set; }
 

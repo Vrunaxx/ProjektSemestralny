@@ -34,7 +34,9 @@ namespace ProjektSemestralny
 
         private void Button_Movies(object sender, RoutedEventArgs e)
         {
-            
+            ManageMovies manage = new ManageMovies();
+            this.Visibility = Visibility.Hidden;
+            manage.Show();
         }
 
         private void Button_Games(object sender, RoutedEventArgs e)

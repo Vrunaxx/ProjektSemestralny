@@ -20,19 +20,19 @@ namespace ProjektSemestralny
     /// <summary>
     /// Interaction logic for Menage.xaml
     /// </summary>
-    public partial class ManageBooks
+    public partial class ManageGames
     {
-        private ProjektSemestralnyDbContext PSDbContextBooks;
-        private ObservableCollection<Book> ObsvBooks;
+        private ProjektSemestralnyDbContext PSDbContextGames;
+        private ObservableCollection<Game> ObsvGames;
 
-        public ManageBooks()
+        public ManageGames()
         {
             this.InitializeComponent();
             SetContext();
-            ObsvBooks = new ObservableCollection<Book>(PSDbContextBooks.Books);
-            BookList.ItemsSource = ObsvBooks;
+            ObsvGames = new ObservableCollection<Game>(PSDbContextGames.Games);
+            GameList.ItemsSource = ObsvGames;
 
-            FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor"};
+            FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
 
         #region Filters
@@ -55,20 +55,20 @@ namespace ProjektSemestralny
 
         private bool TitleFilter(object obj)
         {
-            var FilterObj = obj as Book;
+            var FilterObj = obj as Game;
 
             return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
 
         private bool CategoryFilter(object obj)
         {
-            var FilterObj = obj as Book;
+            var FilterObj = obj as Game;
 
             return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        } 
+        }
         private bool AutorFilter(object obj)
         {
-            var FilterObj = obj as Book;
+            var FilterObj = obj as Game;
 
             return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
@@ -77,43 +77,43 @@ namespace ProjektSemestralny
         {
             if (FilterTextBox.Text == null)
             {
-                BookList.Items.Filter = null;
+                GameList.Items.Filter = null;
             }
             else
             {
-                BookList.Items.Filter = GetFilter();
+                GameList.Items.Filter = GetFilter();
             }
         }
 
         private void FilterBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BookList.Items.Filter = GetFilter();
+            GameList.Items.Filter = GetFilter();
         }
 
         #endregion
 
         private void SetContext()
         {
-            PSDbContextBooks = new ProjektSemestralnyDbContext();
+            PSDbContextGames = new ProjektSemestralnyDbContext();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             SetContext();
 
-            if (BookList.SelectedIndex != -1)
+            if (GameList.SelectedIndex != -1)
             {
-                var bookToUpdate = PSDbContextBooks.Books.First(book => book.Id == ((Book)BookList.SelectedItem).Id);
-                bookToUpdate.Title = txtTitle.Text;
-                bookToUpdate.Autor = txtAutor.Text;
-                bookToUpdate.Category = txtCat.Text;
-                bookToUpdate.Price = decimal.Parse(txtPrice.Text);
-                bookToUpdate.DateOrRelease = DateTime.ParseExact(txtDoR.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                bookToUpdate.StorageAmount = Convert.ToInt32(txtSA.Text);
+                var gameToUpdate = PSDbContextGames.Games.First(game => game.Id == ((Game)GameList.SelectedItem).Id);
+                gameToUpdate.Title = txtTitle.Text;
+                gameToUpdate.Autor = txtAutor.Text;
+                gameToUpdate.Category = txtCat.Text;
+                gameToUpdate.Price = decimal.Parse(txtPrice.Text);
+                gameToUpdate.DateOrRelease = DateTime.ParseExact(txtDoR.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                gameToUpdate.StorageAmount = Convert.ToInt32(txtSA.Text);
             }
             else
             {
-                var book = new Book
+                var game = new Game
                 {
                     Title = txtTitle.Text,
                     Autor = txtAutor.Text,
@@ -122,19 +122,19 @@ namespace ProjektSemestralny
                     DateOrRelease = DateTime.ParseExact(txtDoR.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture),
                     StorageAmount = Convert.ToInt32(txtSA.Text)
                 };
-                PSDbContextBooks.Books.Add(book);
-                ObsvBooks.Add(book);
+                PSDbContextGames.Games.Add(game);
+                ObsvGames.Add(game);
             }
 
-            PSDbContextBooks.SaveChanges();
+            PSDbContextGames.SaveChanges();
             MessageBox.Show("You have added an item");
         }
 
-        private void BookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GameList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (BookList.SelectedIndex >= 0)
+            if (GameList.SelectedIndex >= 0)
             {
-                var selectedItem = ObsvBooks.ElementAt(BookList.SelectedIndex);
+                var selectedItem = ObsvGames.ElementAt(GameList.SelectedIndex);
                 txtTitle.Text = selectedItem.Title;
                 txtAutor.Text = selectedItem.Autor;
                 txtCat.Text = selectedItem.Category;
@@ -155,38 +155,38 @@ namespace ProjektSemestralny
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-            if (BookList.SelectedIndex < 0)
+            if (GameList.SelectedIndex < 0)
             {
                 MessageBox.Show("You have to select an item");
             }
             else
             {
-                var bookToDelete = PSDbContextBooks.Books.First(book => book.Id == ((Book)BookList.SelectedItem).Id);
-                PSDbContextBooks.Books.Remove(bookToDelete);
-                ObsvBooks.Remove(((Book)BookList.SelectedItem));
-                PSDbContextBooks.SaveChanges();
+                var gameToDelete = PSDbContextGames.Games.First(game => game.Id == ((Game)GameList.SelectedItem).Id);
+                PSDbContextGames.Games.Remove(gameToDelete);
+                ObsvGames.Remove(((Game)GameList.SelectedItem));
+                PSDbContextGames.SaveChanges();
                 MessageBox.Show("You have deleted an item");
             }
         }
 
         private void Remove_Sort()
         {
-            if (BookList.Items.SortDescriptions.Any())
-            BookList.Items.SortDescriptions.Remove(BookList.Items.SortDescriptions.First());
+            if (GameList.Items.SortDescriptions.Any())
+                GameList.Items.SortDescriptions.Remove(GameList.Items.SortDescriptions.First());
         }
 
         private void Button_Click_ASC(object sender, RoutedEventArgs e)
         {
             Remove_Sort();
-            BookList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Ascending));
+            GameList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Ascending));
         }
 
         private void Button_Click_DESC(object sender, RoutedEventArgs e)
         {
             Remove_Sort();
-            BookList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
+            GameList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
         }
 
-       
+
     }
 }

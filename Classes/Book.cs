@@ -15,15 +15,22 @@ namespace ProjektSemestralny.Classes
 
         public string Title { get; set; }
 
+        public string Autor { get; set; }
+
         public string Category { get; set; }
 
-        public float Price { get; set; }
+        public decimal Price { get; set; }
 
         public DateTime DateOrRelease { get; set; }
 
         public int StorageAmount { get; set; }
 
         #endregion properties
+
+        public Book()
+        {
+            Id = Guid.NewGuid();
+        }
 
     }
 }

@@ -27,7 +27,7 @@ namespace ProjektSemestralny
 
         private void OpenManage(object sender, RoutedEventArgs e)
         {
-            Manage manage = new Manage();
+            ManageBooks manage = new ManageBooks();
             this.Visibility = Visibility.Hidden;
             manage.Show();
         }

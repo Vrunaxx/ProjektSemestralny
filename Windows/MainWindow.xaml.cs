@@ -52,5 +52,12 @@ namespace ProjektSemestralny
             this.Visibility = Visibility.Hidden;
             manage.Show();
         }
+
+        private void Button_ViewOrders(object sender, RoutedEventArgs e)
+        {
+            ManageViewOrder manage = new ManageViewOrder();
+            this.Visibility = Visibility.Hidden;
+            manage.Show();
+        }
     }
 }

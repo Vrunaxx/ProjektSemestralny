@@ -18,6 +18,10 @@ namespace ProjektSemestralny.Classes
         public Order Order { get; set; }
 
         #endregion properties
+        public GameProductId()
+        {
+            Id = Guid.NewGuid();
+        }
 
     }
 }

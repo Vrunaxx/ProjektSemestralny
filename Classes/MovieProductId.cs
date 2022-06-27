@@ -17,5 +17,10 @@ namespace ProjektSemestralny.Classes
         public Order Order { get; set; }
 
         #endregion properties
+
+        public MovieProductId()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

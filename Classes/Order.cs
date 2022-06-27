@@ -12,6 +12,7 @@ namespace ProjektSemestralny.Classes
 
         [Key]
         public Guid Id { get; set; }
+        public int OrderId { get; set; }
 
         [Display(Name = "Order Date")]
         public DateTime OrderDate { get; set; }

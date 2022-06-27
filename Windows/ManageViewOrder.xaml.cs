@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -22,29 +23,26 @@ namespace ProjektSemestralny
     /// <summary>
     /// Interaction logic for Menage.xaml
     /// </summary>
-    public partial class ManageOrder
+    public partial class ManageViewOrder
     {
         private ProjektSemestralnyDbContext PSDbContext;
-        private ObservableCollection<Book> ObsvBooks;
-        private ObservableCollection<Movie> ObsvMovies;
-        private ObservableCollection<Game> ObsvGames;
-        private Order order;
-        private ItemType itemType;
+        private ObservableCollection<Order> ObsvOrder;
 
-        public ManageOrder()
+
+        public ManageViewOrder()
         {
             this.InitializeComponent();
             SetContext();
-            ObsvBooks = new ObservableCollection<Book>(PSDbContext.Books);
-            ObsvMovies = new ObservableCollection<Movie>(PSDbContext.Movies);
-            ObsvGames = new ObservableCollection<Game>(PSDbContext.Games);
-            StockList.ItemsSource = ObsvBooks;
-            order = new Order();
-            OrderListBooks.ItemsSource = order.CollectionOfBooks;
-            OrderListMovies.ItemsSource = order.CollectionOfMovies;
-            OrderListGames.ItemsSource = order.CollectionOfGames;
-            itemType = ItemType.Book;
+            ObsvOrder = new ObservableCollection<Order>(PSDbContext.Orders); 
+            StockList.ItemsSource = ObsvOrder;
 
+            foreach (var order in ObsvOrder)
+            {
+                order.CollectionOfBooks = new ObservableCollection<Book>(PSDbContext.BookProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Book));
+                order.CollectionOfGames = new ObservableCollection<Game>(PSDbContext.GameProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Game));
+                order.CollectionOfMovies = new ObservableCollection<Movie>(PSDbContext.MovieProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Movie));
+            }
+            
             FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
         private void SetContext()
@@ -175,89 +173,6 @@ namespace ProjektSemestralny
 
         #endregion
 
-        #region Load
-        private void Book_Load(object sender, RoutedEventArgs e)
-        {
-            StockList.ItemsSource = ObsvBooks;
-            itemType = ItemType.Book;
-        }
-
-        private void Movie_Load(object sender, RoutedEventArgs e)
-        {
-            StockList.ItemsSource = ObsvMovies;
-            itemType = ItemType.Movie;
-        }
-
-        private void Game_Load(object sender, RoutedEventArgs e)
-        {
-            StockList.ItemsSource = ObsvGames;
-            itemType = ItemType.Game;
-        }
-        #endregion
-
-        #region Add/Remove/Save Order
-        private void Add_Order(object sender, RoutedEventArgs e)
-        {
-            switch (itemType)
-            {
-                case ItemType.Book:
-                    order.CollectionOfBooks.Add((Book)StockList.SelectedItem);
-                    break;
-
-                case ItemType.Game:
-                    order.CollectionOfGames.Add((Game)StockList.SelectedItem);
-                    break;
-
-                case ItemType.Movie:
-                    order.CollectionOfMovies.Add((Movie)StockList.SelectedItem);
-                    break;
-            }
-        }
-
-        private void Remove_Order(object sender, RoutedEventArgs e)
-        {
-            switch (itemType)
-            {
-                case ItemType.Book:
-                    order.CollectionOfBooks.Remove((Book)OrderListBooks.SelectedItem);
-                    break;
-
-                case ItemType.Game:
-                    order.CollectionOfGames.Remove((Game)OrderListGames.SelectedItem);
-                    break;
-
-                case ItemType.Movie:
-                    order.CollectionOfMovies.Remove((Movie)OrderListMovies.SelectedItem);
-                    break;
-            }
-        }
-
-        private void Save_Order(object sender, RoutedEventArgs e)
-        {
-            SetContext();
-            PSDbContext.Orders.Add(order);
-            foreach ( var book in order.CollectionOfBooks)
-            {
-                var BookToUpdate = PSDbContext.Books.First(b => b.Id == book.Id);
-                BookToUpdate.StorageAmount--;
-                PSDbContext.BookProductIds.Add(new BookProductId { Book = BookToUpdate, Order = order});
-            }
-            foreach ( var game in order.CollectionOfGames)
-            {
-                var GameToUpdate = PSDbContext.Games.First(g => g.Id == game.Id);
-                GameToUpdate.StorageAmount--;
-                PSDbContext.GameProductIds.Add(new GameProductId { Game = GameToUpdate, Order = order});
-            }
-            foreach ( var movie in order.CollectionOfMovies)
-            {
-                var MovieToUpdate = PSDbContext.Movies.First(m => m.Id == movie.Id);
-                MovieToUpdate.StorageAmount--;
-                PSDbContext.MovieProductIds.Add(new MovieProductId { Movie = MovieToUpdate, Order = order});
-            }
-            PSDbContext.SaveChanges();
-        }
-        #endregion
-
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             MainWindow manage = new MainWindow();
@@ -265,6 +180,15 @@ namespace ProjektSemestralny
             manage.Show();
         }
 
+        private void StockList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (StockList.SelectedIndex != -1)
+            {
+                OrderListBooks.ItemsSource = ((Order)StockList.SelectedItem).CollectionOfBooks;
+                OrderListMovies.ItemsSource = ((Order)StockList.SelectedItem).CollectionOfMovies;
+                OrderListGames.ItemsSource = ((Order)StockList.SelectedItem).CollectionOfGames;
+            }
 
+        }
     }
 }

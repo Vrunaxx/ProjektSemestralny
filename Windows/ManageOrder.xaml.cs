@@ -195,7 +195,7 @@ namespace ProjektSemestralny
         }
         #endregion
 
-        #region Add/Remove Order
+        #region Add/Remove/Save Order
         private void Add_Order(object sender, RoutedEventArgs e)
         {
             switch (itemType)
@@ -231,6 +231,31 @@ namespace ProjektSemestralny
                     break;
             }
         }
+
+        private void Save_Order(object sender, RoutedEventArgs e)
+        {
+            SetContext();
+            PSDbContext.Orders.Add(order);
+            foreach ( var book in order.CollectionOfBooks)
+            {
+                var BookToUpdate = PSDbContext.Books.First(b => b.Id == book.Id);
+                BookToUpdate.StorageAmount--;
+                PSDbContext.BookProductIds.Add(new BookProductId { Book = BookToUpdate, Order = order});
+            }
+            foreach ( var game in order.CollectionOfGames)
+            {
+                var GameToUpdate = PSDbContext.Games.First(g => g.Id == game.Id);
+                GameToUpdate.StorageAmount--;
+                PSDbContext.GameProductIds.Add(new GameProductId { Game = GameToUpdate, Order = order});
+            }
+            foreach ( var movie in order.CollectionOfMovies)
+            {
+                var MovieToUpdate = PSDbContext.Movies.First(m => m.Id == movie.Id);
+                MovieToUpdate.StorageAmount--;
+                PSDbContext.MovieProductIds.Add(new MovieProductId { Movie = MovieToUpdate, Order = order});
+            }
+            PSDbContext.SaveChanges();
+        }
         #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -239,5 +264,7 @@ namespace ProjektSemestralny
             this.Visibility = Visibility.Hidden;
             manage.Show();
         }
+
+
     }
 }

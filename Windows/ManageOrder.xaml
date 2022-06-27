@@ -37,25 +37,27 @@
                             />
 
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="Add/Remove" Width="148">
+                <Fluent:RibbonGroupBox Header="Add/Remove" Width="201">
                     <Fluent:Button Header="Add to orders" Width="65" Click="Add_Order"
                             />
                     <Fluent:Button Header="Remove from Orders" Width="79" Click="Remove_Order"
                             />
+                    <Fluent:Button Header="Save" Width="51" Click="Save_Order"
+                            />
 
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="Filter" Width="355"/>
+                <Fluent:RibbonGroupBox Header="Filter" Width="303"/>
 
             </Fluent:RibbonTabItem>
 
         </Fluent:Ribbon>
 
 
-        <ComboBox Name="FilterBy" SelectedIndex="0" SelectionChanged="FilterBy_SelectionChanged" HorizontalAlignment="Left" Margin="510,66,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged" HorizontalAlignment="Left" Margin="647,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127" Height="22"/>
+        <ComboBox Name="FilterBy" SelectedIndex="0" SelectionChanged="FilterBy_SelectionChanged" HorizontalAlignment="Left" Margin="558,66,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged" HorizontalAlignment="Left" Margin="701,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127" Height="22"/>
 
-        <Label Content="FilterBy" HorizontalAlignment="Left" Margin="546,43,0,0" VerticalAlignment="Top"/>
-        <Label Content="Search" HorizontalAlignment="Left" Margin="688,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="FilterBy" HorizontalAlignment="Left" Margin="593,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.207,0.656"/>
+        <Label Content="Search" HorizontalAlignment="Left" Margin="742,43,0,0" VerticalAlignment="Top"/>
         <Button Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="51" Click="Home_Click"/>
 
         <ListView Name="StockList" Margin="6,126,465,10">

@@ -19,5 +19,10 @@ namespace ProjektSemestralny.Classes
 
         #endregion properties
 
+        public BookProductId()
+        {
+            Id = Guid.NewGuid();
+        }
+
     }
 }

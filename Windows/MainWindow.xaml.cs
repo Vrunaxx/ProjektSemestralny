@@ -48,7 +48,9 @@ namespace ProjektSemestralny
 
         private void Button_Orders(object sender, RoutedEventArgs e)
         {
-            
+            ManageOrder manage = new ManageOrder();
+            this.Visibility = Visibility.Hidden;
+            manage.Show();
         }
     }
 }

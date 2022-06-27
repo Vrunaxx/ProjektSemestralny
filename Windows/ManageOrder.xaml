@@ -1,0 +1,87 @@
+﻿<Window
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:Fluent="urn:fluent-ribbon"
+                     xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Edm="clr-namespace:System.Data.Entity.Core.Metadata.Edm;assembly=EntityFramework"
+                x:Class="ProjektSemestralny.ManageOrder"
+                     mc:Ignorable="av"
+                     Title="Manage Orders" 
+                     Width="800" 
+                     Height="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="177*" />
+            <RowDefinition Height="286*"/>
+        </Grid.RowDefinitions>
+
+        <Fluent:Ribbon VerticalAlignment="Center">
+
+            <!--Tabs-->
+            <Fluent:RibbonTabItem Width="1" x:Name="Home" Header="Home">
+                <Fluent:RibbonGroupBox Header="Load" Width="195">
+                    <Fluent:Button Header="Books" Width="58" Click="Book_Load"
+                            />
+                    <Fluent:Button Header="Movies" Width="59" Click="Movie_Load"
+                            />
+                    <Fluent:Button Header="Games" Width="72" Click="Game_Load"
+                            />
+
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Sort" Width="148">
+                    <Fluent:Button Header="Ascending" Width="72" Click="Button_Click_ASC"
+                            />
+                    <Fluent:Button Header="Descending" Width="70" Click="Button_Click_DESC"
+                            />
+
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Add/Remove" Width="148">
+                    <Fluent:Button Header="Add to orders" Width="65" Click="Button_Click_DESC"
+                            />
+                    <Fluent:Button Header="Remove from Orders" Width="79" Click="Button_Click_DESC"
+                            />
+
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Filter" Width="304"/>
+
+            </Fluent:RibbonTabItem>
+
+        </Fluent:Ribbon>
+        <ListView Name="OrderList" Grid.Row="1" Margin="0,0,410,0" Grid.RowSpan="2" SelectionChanged="OrderList_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Autor}" Header="Autor"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Category}" Header="Category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding StorageAmount}" Header="StorageAmount"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <ComboBox Name="FilterBy" SelectedIndex="0" SelectionChanged="FilterBy_SelectionChanged" HorizontalAlignment="Left" Margin="510,66,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged" HorizontalAlignment="Left" Margin="647,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127" Height="22"/>
+
+        <Label Content="FilterBy" HorizontalAlignment="Left" Margin="546,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Search" HorizontalAlignment="Left" Margin="688,43,0,0" VerticalAlignment="Top"/>
+        <Button Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="51" Click="Home_Click"/>
+        <ListView x:Name="OrderList_Copy" Grid.Row="1" Margin="390,0,0,0" Grid.RowSpan="2" SelectionChanged="OrderList_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Autor}" Header="Autor"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Category}" Header="Category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding StorageAmount}" Header="StorageAmount"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding typeof}" Header="Book/Game/Movie"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+
+
+
+
+    </Grid>
+</Window>

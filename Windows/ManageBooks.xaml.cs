@@ -23,14 +23,14 @@ namespace ProjektSemestralny
     public partial class ManageBooks
     {
         private ProjektSemestralnyDbContext PSDbContextBooks;
-        private ObservableCollection<Book> ObsvBooks;
+        private ObservableCollection<Book> ObsvOrders;
 
         public ManageBooks()
         {
             this.InitializeComponent();
             SetContext();
-            ObsvBooks = new ObservableCollection<Book>(PSDbContextBooks.Books);
-            BookList.ItemsSource = ObsvBooks;
+            ObsvOrders = new ObservableCollection<Book>(PSDbContextBooks.Books);
+            BookList.ItemsSource = ObsvOrders;
 
             FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor"};
         }
@@ -123,7 +123,7 @@ namespace ProjektSemestralny
                     StorageAmount = Convert.ToInt32(txtSA.Text)
                 };
                 PSDbContextBooks.Books.Add(book);
-                ObsvBooks.Add(book);
+                ObsvOrders.Add(book);
             }
 
             PSDbContextBooks.SaveChanges();
@@ -134,7 +134,7 @@ namespace ProjektSemestralny
         {
             if (BookList.SelectedIndex >= 0)
             {
-                var selectedItem = ObsvBooks.ElementAt(BookList.SelectedIndex);
+                var selectedItem = ObsvOrders.ElementAt(BookList.SelectedIndex);
                 txtTitle.Text = selectedItem.Title;
                 txtAutor.Text = selectedItem.Autor;
                 txtCat.Text = selectedItem.Category;
@@ -163,7 +163,7 @@ namespace ProjektSemestralny
             {
                 var bookToDelete = PSDbContextBooks.Books.First(book => book.Id == ((Book)BookList.SelectedItem).Id);
                 PSDbContextBooks.Books.Remove(bookToDelete);
-                ObsvBooks.Remove(((Book)BookList.SelectedItem));
+                ObsvOrders.Remove(((Book)BookList.SelectedItem));
                 PSDbContextBooks.SaveChanges();
                 MessageBox.Show("You have deleted an item");
             }

@@ -18,7 +18,7 @@
         <Fluent:Ribbon VerticalAlignment="Center">
 
             <!--Tabs-->
-            <Fluent:RibbonTabItem RenderTransformOrigin="0.5,0.5" Width="1" >
+            <Fluent:RibbonTabItem RenderTransformOrigin="0.5,0.5" Width="1" Name="Home" Header="Home">
                 <Fluent:RibbonTabItem.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>

@@ -18,7 +18,7 @@
         <Fluent:Ribbon VerticalAlignment="Center">
 
             <!--Tabs-->
-            <Fluent:RibbonTabItem Width="1">
+            <Fluent:RibbonTabItem Width="1" x:Name="Home" Header="Home">
                 <Fluent:RibbonGroupBox Header="Edit" Width="195">
                     <Fluent:Button Header="Save" Width="99" Click="SaveButton_Click"
                             />

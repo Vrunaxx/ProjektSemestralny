@@ -43,7 +43,6 @@ namespace ProjektSemestralny
                 order.CollectionOfMovies = new ObservableCollection<Movie>(PSDbContext.MovieProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Movie));
             }
             
-            FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
         private void SetContext()
         {
@@ -51,103 +50,30 @@ namespace ProjektSemestralny
         }
 
         #region Filters
-        //public Predicate<object> GetFilter()
-        //{
-        //    var type = StockList.ItemsSource;
-
-        //    switch (FilterBy.SelectedItem as string)
-        //    {
-        //        case "Title":
-        //            return TitleFilter;
-
-        //        case "Category":
-        //            return CategoryFilter;
-
-        //        case "Autor":
-        //            return AutorFilter;
-        //    }
-
-        //    return TitleFilter;
-        //}
-        #region Book
-        private bool TitleFilterBook(object obj)
+        public Predicate<object> GetFilter()
         {
-            var FilterObj = obj as Book;
+            var type = StockList.ItemsSource;
 
-            return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+            return TitleFilterId;
         }
 
-        private bool CategoryFilterBook(object obj)
+        private bool TitleFilterId(object obj)
         {
-            var FilterObj = obj as Book;
+            var FilterObj = obj as Order;
 
-            return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+            return FilterObj.OrderId.ToString().Contains(FilterTextBox.Text);
         }
-        private bool AutorFilterBook(object obj)
-        {
-            var FilterObj = obj as Book;
-
-            return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-        #endregion
-        #region Games
-        private bool TitleFilterGame(object obj)
-        {
-            var FilterObj = obj as Game;
-
-            return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-
-        private bool CategoryFilterGame(object obj)
-        {
-            var FilterObj = obj as Game;
-
-            return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-        private bool AutorFilterGame(object obj)
-        {
-            var FilterObj = obj as Game;
-
-            return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-        #endregion
-        #region Movies
-        private bool TitleFilterMovie(object obj)
-        {
-            var FilterObj = obj as Movie;
-
-            return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-
-        private bool CategoryFilterMovie(object obj)
-        {
-            var FilterObj = obj as Movie;
-
-            return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-        private bool AutorFilterMovie(object obj)
-        {
-            var FilterObj = obj as Movie;
-
-            return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        }
-        #endregion
 
         private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //if (FilterTextBox.Text == null)
-            //{
-            //    OrderList.Items.Filter = null;
-            //}
-            //else
-            //{
-            //    OrderList.Items.Filter = GetFilter();
-            //}
-        }
-
-        private void FilterBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //OrderList.Items.Filter = GetFilter();
+            if (FilterTextBox.Text == null)
+            {
+                StockList.Items.Filter = null;
+            }
+            else
+            {
+                StockList.Items.Filter = GetFilter();
+            }
         }
 
         #endregion
@@ -156,13 +82,13 @@ namespace ProjektSemestralny
         private void Button_Click_ASC(object sender, RoutedEventArgs e)
         {
             Remove_Sort();
-            StockList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Ascending));
+            StockList.Items.SortDescriptions.Add(new SortDescription("OrderId", ListSortDirection.Ascending));
         }
 
         private void Button_Click_DESC(object sender, RoutedEventArgs e)
         {
             Remove_Sort();
-            StockList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
+            StockList.Items.SortDescriptions.Add(new SortDescription("OrderId", ListSortDirection.Descending));
         }
 
         private void Remove_Sort()

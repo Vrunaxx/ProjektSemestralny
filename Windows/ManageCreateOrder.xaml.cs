@@ -239,18 +239,46 @@ namespace ProjektSemestralny
         #region Add/Remove/Save Order
         private void Add_Order(object sender, RoutedEventArgs e)
         {
+
             switch (itemType)
             {
                 case ItemType.Book:
-                    order.CollectionOfBooks.Add((Book)StockList.SelectedItem);
+                    if (((Book)StockList.SelectedItem).StorageAmount > 0)
+                    {
+                        order.CollectionOfBooks.Add((Book)StockList.SelectedItem);
+                        ObsvBooks.First(b => b.Id == ((Book)StockList.SelectedItem).Id).StorageAmount--;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{((Book)StockList.SelectedItem).Title} Out of Stock ");
+                    }
+                                            
                     break;
 
                 case ItemType.Game:
-                    order.CollectionOfGames.Add((Game)StockList.SelectedItem);
+                    if (((Game)StockList.SelectedItem).StorageAmount > 0)
+                    {
+                        order.CollectionOfGames.Add((Game)StockList.SelectedItem);
+                        ObsvGames.First(b => b.Id == ((Game)StockList.SelectedItem).Id).StorageAmount--;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{((Game)StockList.SelectedItem).Title} Out of Stock ");
+                    }
+
                     break;
 
                 case ItemType.Movie:
-                    order.CollectionOfMovies.Add((Movie)StockList.SelectedItem);
+                    if (((Movie)StockList.SelectedItem).StorageAmount > 0)
+                    {
+                        order.CollectionOfMovies.Add((Movie)StockList.SelectedItem);
+                        ObsvMovies.First(b => b.Id == ((Movie)StockList.SelectedItem).Id).StorageAmount--;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{((Movie)StockList.SelectedItem).Title} Out of Stock ");
+                    }
+                    
                     break;
             }
         }
@@ -260,14 +288,17 @@ namespace ProjektSemestralny
             switch (itemType)
             {
                 case ItemType.Book:
+                    ObsvBooks.First(b => b.Id == ((Book)StockList.SelectedItem).Id).StorageAmount++;
                     order.CollectionOfBooks.Remove((Book)OrderListBooks.SelectedItem);
                     break;
 
                 case ItemType.Game:
+                    ObsvGames.First(b => b.Id == ((Game)StockList.SelectedItem).Id).StorageAmount++;
                     order.CollectionOfGames.Remove((Game)OrderListGames.SelectedItem);
                     break;
 
                 case ItemType.Movie:
+                    ObsvMovies.First(b => b.Id == ((Movie)StockList.SelectedItem).Id).StorageAmount++;
                     order.CollectionOfMovies.Remove((Movie)OrderListMovies.SelectedItem);
                     break;
             }

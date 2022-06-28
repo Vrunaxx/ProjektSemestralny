@@ -53,24 +53,56 @@ namespace ProjektSemestralny
         }
 
         #region Filters
-        //public Predicate<object> GetFilter()
-        //{
-        //    var type = StockList.ItemsSource;
+        public Predicate<object> GetFilter()
+        {
 
-        //    switch (FilterBy.SelectedItem as string)
-        //    {
-        //        case "Title":
-        //            return TitleFilter;
+            switch (itemType)
+            {
+                case ItemType.Book:
+                    switch (FilterBy.SelectedItem as string)
+                    {
+                        case "Title":
+                            return TitleFilterBook;
 
-        //        case "Category":
-        //            return CategoryFilter;
+                        case "Category":
+                            return CategoryFilterBook;
 
-        //        case "Autor":
-        //            return AutorFilter;
-        //    }
+                        case "Autor":
+                            return AutorFilterBook;
+                    }
+                    return TitleFilterBook;
 
-        //    return TitleFilter;
-        //}
+                case ItemType.Movie:
+                    switch (FilterBy.SelectedItem as string)
+                    {
+                        case "Title":
+                            return TitleFilterMovie;
+
+                        case "Category":
+                            return CategoryFilterMovie;
+
+                        case "Autor":
+                            return AutorFilterMovie;
+                    }
+                    return TitleFilterMovie;
+
+                case ItemType.Game:
+                    switch (FilterBy.SelectedItem as string)
+                    {
+                        case "Title":
+                            return TitleFilterGame;
+
+                        case "Category":
+                            return CategoryFilterGame;
+
+                        case "Autor":
+                            return AutorFilterGame;
+                    }
+                    return TitleFilterGame;
+            }
+
+            return TitleFilterGame;
+        }
         #region Book
         private bool TitleFilterBook(object obj)
         {
@@ -85,21 +117,22 @@ namespace ProjektSemestralny
 
             return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
+
         private bool AutorFilterBook(object obj)
         {
             var FilterObj = obj as Book;
 
             return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
+
         #endregion
-        #region Games
+        #region Game
         private bool TitleFilterGame(object obj)
         {
             var FilterObj = obj as Game;
 
             return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
-
         private bool CategoryFilterGame(object obj)
         {
             var FilterObj = obj as Game;
@@ -113,14 +146,13 @@ namespace ProjektSemestralny
             return FilterObj.Autor.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
         #endregion
-        #region Movies
+        #region Movie
         private bool TitleFilterMovie(object obj)
         {
             var FilterObj = obj as Movie;
 
             return FilterObj.Title.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
-
         private bool CategoryFilterMovie(object obj)
         {
             var FilterObj = obj as Movie;
@@ -137,19 +169,25 @@ namespace ProjektSemestralny
 
         private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //if (FilterTextBox.Text == null)
-            //{
-            //    OrderList.Items.Filter = null;
-            //}
-            //else
-            //{
-            //    OrderList.Items.Filter = GetFilter();
-            //}
+            if (FilterTextBox.Text == null)
+            {
+                StockList.Items.Filter = null;
+            }
+            else
+            {
+                StockList.Items.Filter = GetFilter();
+            }
         }
 
         private void FilterBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //OrderList.Items.Filter = GetFilter();
+            StockList.Items.Filter = GetFilter();
+        }
+
+        private void RemoveFilter()
+        {
+            FilterTextBox.Text = "";
+            StockList.Items.Filter = null;
         }
 
         #endregion
@@ -178,18 +216,21 @@ namespace ProjektSemestralny
         #region Load
         private void Book_Load(object sender, RoutedEventArgs e)
         {
+            RemoveFilter();
             StockList.ItemsSource = ObsvBooks;
             itemType = ItemType.Book;
         }
 
         private void Movie_Load(object sender, RoutedEventArgs e)
         {
+            RemoveFilter();
             StockList.ItemsSource = ObsvMovies;
             itemType = ItemType.Movie;
         }
 
         private void Game_Load(object sender, RoutedEventArgs e)
         {
+            RemoveFilter();
             StockList.ItemsSource = ObsvGames;
             itemType = ItemType.Game;
         }

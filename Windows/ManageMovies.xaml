@@ -33,14 +33,14 @@
                             />
 
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="Filter" Width="409"/>
+                <Fluent:RibbonGroupBox Header="Filter" Width="385"/>
 
             </Fluent:RibbonTabItem>
 
         </Fluent:Ribbon>
-        <Label Content="Title" HorizontalAlignment="Left" Height="28" Margin="427,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="45"/>
+        <Label Content="Title" HorizontalAlignment="Left" Height="28" Margin="561,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="33"/>
         <TextBox Name="txtTitle" HorizontalAlignment="Left" Margin="594,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <ListView Name="MovieList" Grid.Row="1" Margin="0,0,400,0" Grid.RowSpan="2" SelectionChanged="MovieList_SelectionChanged">
+        <ListView Name="MovieList" Grid.Row="1" Margin="0,0,307,0" Grid.RowSpan="2" SelectionChanged="MovieList_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title"/>
@@ -56,16 +56,16 @@
 
         <Label Content="FilterBy" HorizontalAlignment="Left" Margin="493,43,0,0" VerticalAlignment="Top"/>
         <Label Content="Search" HorizontalAlignment="Left" Margin="649,40,0,0" VerticalAlignment="Top"/>
-        <Label Content="Autor" HorizontalAlignment="Left" Margin="427,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Category" HorizontalAlignment="Left" Height="28" Margin="427,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="60"/>
-        <Label Content="Price" HorizontalAlignment="Left" Height="28" Margin="427,2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="60"/>
-        <Label Content="Date Of Release" HorizontalAlignment="Left" Height="28" Margin="427,141,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94"/>
-        <Label Content="Storage Amount&#xA;" HorizontalAlignment="Left" Height="28" Margin="427,32,0,0" Grid.Row="2" VerticalAlignment="Top" Width="108"/>
+        <Label Content="Autor" HorizontalAlignment="Left" Margin="554,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Category" HorizontalAlignment="Left" Height="28" Margin="534,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="60"/>
+        <Label Content="Price" HorizontalAlignment="Left" Height="28" Margin="556,2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="38"/>
+        <Label Content="Date Of Release" HorizontalAlignment="Left" Height="28" Margin="500,145,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94"/>
+        <Label Content="Storage Amount&#xA;" HorizontalAlignment="Left" Height="28" Margin="493,32,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
         <TextBox Name="txtAutor" HorizontalAlignment="Left" Margin="594,84,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtCat" HorizontalAlignment="Left" Margin="594,116,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="594,7,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSA" HorizontalAlignment="Left" Margin="594,37,0,0" Grid.Row="2" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="120"/>
-        <DatePicker x:Name="txtDoR" HorizontalAlignment="Left" Margin="603,147,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <DatePicker x:Name="txtDoR" HorizontalAlignment="Left" Margin="594,147,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
         <Button Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="51" Click="Home_Click"/>
 
 

@@ -28,7 +28,7 @@
                             />
 
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="Filter" Width="585"/>
+                <Fluent:RibbonGroupBox Header="Filter" Width="564"/>
 
             </Fluent:RibbonTabItem>
 

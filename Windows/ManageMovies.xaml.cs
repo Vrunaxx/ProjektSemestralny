@@ -10,13 +10,18 @@ using System.Windows.Controls;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for Menage.xaml
+    /// Logika interakcji dla ManageMovies
     /// </summary>
     public partial class ManageMovies
     {
         private ProjektSemestralnyDbContext PSDbContextMovies;
         private ObservableCollection<Movie> ObsvMovies;
 
+        /// <summary>
+        /// StartUp dla okna zarządzania filmami
+        /// Łączy z bazą danych 
+        /// Oraz ustawia zawartość DropBoxa
+        /// </summary>
         public ManageMovies()
         {
             this.InitializeComponent();
@@ -28,6 +33,13 @@ namespace ProjektSemestralny
         }
 
         #region Filters
+        /// <summary>
+        /// Decyduje o tym wg. jakiego pola będzie filtrowany podgląd
+        /// </summary>
+        /// <returns>
+        /// Zwraca filter
+        /// Domyślnie filtruje po tytule
+        /// </returns>
         public Predicate<object> GetFilter()
         {
             switch (FilterBy.SelectedItem as string)

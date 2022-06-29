@@ -10,13 +10,18 @@ using System.Windows.Controls;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for Menage.xaml
+    /// Logika interakcji dla ManageBooks
     /// </summary>
     public partial class ManageBooks
     {
         private ProjektSemestralnyDbContext PSDbContextBooks;
         private ObservableCollection<Book> ObsvOrders;
 
+        /// <summary>
+        /// Startup Okna do zarządzania książkami
+        /// Tworzy konener dla podglądu książek z bazy danych
+        /// Oraz ustawia zawartość DropBoxa
+        /// </summary>
         public ManageBooks()
         {
             this.InitializeComponent();
@@ -28,6 +33,13 @@ namespace ProjektSemestralny
         }
 
         #region Filters
+        /// <summary>
+        /// Decyduje o tym wg. jakiego pola będzie filtrowany podgląd
+        /// </summary>
+        /// <returns>
+        /// Zwraca filter
+        /// Domyślnie filtruje po tytule
+        /// </returns>
         public Predicate<object> GetFilter()
         {
             switch (FilterBy.SelectedItem as string)

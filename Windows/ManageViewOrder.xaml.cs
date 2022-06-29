@@ -9,14 +9,19 @@ using System.Windows.Controls;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for Menage.xaml
+    /// Logika interakcji dla Okna podglądu zamówień
     /// </summary>
     public partial class ManageViewOrder
     {
         private ProjektSemestralnyDbContext PSDbContext;
         private ObservableCollection<Order> ObsvOrder;
 
-
+        /// <summary>
+        /// StartUp dla okna zarządzania filmami
+        /// Łączy z bazą danych
+        /// foreach zapełnia podgląd
+        /// Oraz ustawia zawartość DropBoxa
+        /// </summary>
         public ManageViewOrder()
         {
             this.InitializeComponent();
@@ -38,6 +43,12 @@ namespace ProjektSemestralny
         }
 
         #region Filters
+        /// <summary>
+        /// Filtruje po Id
+        /// </summary>
+        /// <returns>
+        /// Zwraca filter
+        /// </returns>
         public Predicate<object> GetFilter()
         {
             var type = StockList.ItemsSource;

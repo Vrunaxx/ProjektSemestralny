@@ -10,7 +10,7 @@ using System.Windows.Controls;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for 
+    /// Logika interakcji dla towrzenia zamówień
     /// </summary>
     public partial class ManageOrder
     {
@@ -22,7 +22,10 @@ namespace ProjektSemestralny
         private ItemType itemType;
 
         /// <summary>
-        /// 
+        /// Starup dla zarządzania zamówieniami
+        /// Łączy książki, filmy i gry z podglądem
+        /// Inicjalizuje typ jako domyslny książki
+        /// Oraz ustawia zawartość DropBoxa
         /// </summary>
         public ManageOrder()
         {
@@ -46,6 +49,10 @@ namespace ProjektSemestralny
         }
 
         #region Filters
+        /// <summary>
+        /// Decyduje jaki filter zastosować na podstawie załadowane typu do podglądu oraz wybranego filtra
+        /// </summary>
+        /// <returns></returns>
         public Predicate<object> GetFilter()
         {
 
@@ -245,7 +252,7 @@ namespace ProjektSemestralny
                     {
                         MessageBox.Show($"{((Book)StockList.SelectedItem).Title} Out of Stock ");
                     }
-                                            
+
                     break;
 
                 case ItemType.Game:
@@ -271,7 +278,7 @@ namespace ProjektSemestralny
                     {
                         MessageBox.Show($"{((Movie)StockList.SelectedItem).Title} Out of Stock ");
                     }
-                    
+
                     break;
             }
         }

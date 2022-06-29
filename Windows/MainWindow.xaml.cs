@@ -3,10 +3,13 @@
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///  Głowne okono Aplikacji
     /// </summary>
     public partial class MainWindow
     {
+        /// <summary>
+        /// Głowne okono Aplikacji zawierające przyciki do poruszania się pomiędzy oknami
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

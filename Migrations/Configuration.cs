@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Text;
+﻿using System.Data.Entity.Migrations;
 
 namespace ProjektSemestralny.Migrations
 {

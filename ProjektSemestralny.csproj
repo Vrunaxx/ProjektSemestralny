@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <StartupObject>ProjektSemestralny.App</StartupObject>
     <UseWindowsForms>False</UseWindowsForms>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,11 +7,46 @@
     <StartupObject>ProjektSemestralny.App</StartupObject>
     <UseWindowsForms>False</UseWindowsForms>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ApplicationIcon>Windows\Icons\DatabaseIcon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Windows\Icons\DatabaseIcon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Fluent.Ribbon" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Windows\Icons\AddIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\AscIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\BookIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\DescIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\GameIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\HomeIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\MovieIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\RemoveIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Windows\Icons\SaveIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

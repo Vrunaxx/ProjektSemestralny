@@ -1,3 +1,3 @@
 # ProjektSemestralny
 
-W Dokumentacji do aplkikacji startowy plik nazywa się 
+W Dokumentacji do aplkikacji startowy plik nazywa się annotated.html

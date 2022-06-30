@@ -31,9 +31,9 @@
                     </TransformGroup>
                 </Fluent:RibbonTabItem.RenderTransform>
                 <Fluent:RibbonGroupBox Header="Edit" Width="180">
-                    <Fluent:Button Header="Save" Width="88" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\SaveIcon.ico" Click="SaveButton_Click"
+                    <Fluent:Button Name="Save_Button" Header="Save" Width="88" IsEnabled="True" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\SaveIcon.ico" Click="SaveButton_Click"
                             />
-                    <Fluent:Button Header="Delete" Width="84" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\RemoveIcon.ico" Click="Button_Delete"
+                    <Fluent:Button x:Name="Delete_Button" Header="Delete" Width="84" IsEnabled="False" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\RemoveIcon.ico" Click="Button_Delete"
                             />
 
                 </Fluent:RibbonGroupBox>
@@ -75,8 +75,8 @@
         <Label Content="Storage Amount&#xA;" HorizontalAlignment="Left" Height="28" Margin="498,204,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.583,-0.07"/>
         <TextBox Name="txtAutor" HorizontalAlignment="Left" Margin="594,84,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtCat" HorizontalAlignment="Left" Margin="594,116,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="594,179,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSA" HorizontalAlignment="Left" Margin="594,209,0,0" Grid.Row="1" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="594,179,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txtSA" HorizontalAlignment="Left" Margin="594,209,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0"  VerticalAlignment="Top" Width="120"  PreviewTextInput="NumberValidationTextBox"/>
         <DatePicker x:Name="txtDoR" HorizontalAlignment="Left" Margin="594,143,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="120"/>
         <Button Content="Home"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="50" Click="Home_Click"/>
 

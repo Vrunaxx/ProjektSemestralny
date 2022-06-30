@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -115,6 +116,26 @@ namespace ProjektSemestralny
                 gameToUpdate.DateOrRelease = DateTime.ParseExact(txtDoR.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture);
                 gameToUpdate.StorageAmount = Convert.ToInt32(txtSA.Text);
             }
+            else if (txtTitle.Text == "")
+            {
+                MessageBox.Show("Title field can not be empty");
+            }
+            else if (txtAutor.Text == "")
+            {
+                MessageBox.Show("Autor field can not be empty");
+            }
+            else if (txtCat.Text == "")
+            {
+                MessageBox.Show("Category field can not be empty");
+            }
+            else if (txtDoR.Text == "")
+            {
+                MessageBox.Show("Date of release field can not be empty");
+            }
+            else if (txtSA.Text == "")
+            {
+                MessageBox.Show("Storage Amount of release field can not be empty");
+            }
             else
             {
                 var game = new Game
@@ -145,6 +166,7 @@ namespace ProjektSemestralny
                 txtPrice.Text = selectedItem.Price.ToString();
                 txtDoR.Text = selectedItem.DateOrRelease.ToString();
                 txtSA.Text = selectedItem.StorageAmount.ToString();
+                Delete_Button.IsEnabled = true;
             }
             else
             {
@@ -196,6 +218,11 @@ namespace ProjektSemestralny
             MainWindow manage = new MainWindow();
             this.Visibility = Visibility.Hidden;
             manage.Show();
+        }
+        private void NumberValidationTextBox(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

@@ -31,16 +31,16 @@
                     </TransformGroup>
                 </Fluent:RibbonTabItem.RenderTransform>
                 <Fluent:RibbonGroupBox Header="Edit" Width="180">
-                    <Fluent:Button Name="Save_Button" Header="Save" Width="88" IsEnabled="True" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\SaveIcon.ico" Click="SaveButton_Click"
+                    <Fluent:Button Name="Save_Button" Header="Save" Width="88" IsEnabled="True" Icon="Windows\Icons\SaveIcon.ico" Click="SaveButton_Click"
                             />
-                    <Fluent:Button x:Name="Delete_Button" Header="Delete" Width="84" IsEnabled="False" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\RemoveIcon.ico" Click="Button_Delete"
+                    <Fluent:Button x:Name="Delete_Button" Header="Delete" Width="84" IsEnabled="False" Icon="Windows\Icons\RemoveIcon.ico" Click="Button_Delete"
                             />
 
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="Sort" Width="194">
-                    <Fluent:Button Header="Ascending" Width="94" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
+                    <Fluent:Button Header="Ascending" Width="94" Icon="Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
                             />
-                    <Fluent:Button Header="Descending" Width="95" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
+                    <Fluent:Button Header="Descending" Width="95" Icon="Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
                             />
 
                 </Fluent:RibbonGroupBox>

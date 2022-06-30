@@ -22,9 +22,9 @@
             <!--Tabs-->
             <Fluent:RibbonTabItem Width="1" x:Name="Home" Header="Home">
                 <Fluent:RibbonGroupBox Header="Sort" Width="263">
-                    <Fluent:Button Header="Ascending" Width="123" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
+                    <Fluent:Button Header="Ascending" Width="123" Icon="Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
                             />
-                    <Fluent:Button Header="Descending" Width="134" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
+                    <Fluent:Button Header="Descending" Width="134" Icon="Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
                             />
 
                 </Fluent:RibbonGroupBox>

@@ -22,27 +22,27 @@
             <!--Tabs-->
             <Fluent:RibbonTabItem Width="1" x:Name="Home" Header="Home">
                 <Fluent:RibbonGroupBox Header="Load" Width="195">
-                    <Fluent:Button Header="Books" Width="62" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\BookIcon.ico" Click="Book_Load"
+                    <Fluent:Button Header="Books" Width="62" Icon="Windows\Icons\BookIcon.ico" Click="Book_Load"
                             />
-                    <Fluent:Button Header="Movies" Width="66" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\MovieIcon.ico" Click="Movie_Load"
+                    <Fluent:Button Header="Movies" Width="66" Icon="Windows\Icons\MovieIcon.ico" Click="Movie_Load"
                             />
-                    <Fluent:Button Header="Games" Width="64" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\GameIcon.ico" Click="Game_Load"
+                    <Fluent:Button Header="Games" Width="64" Icon="Windows\Icons\GameIcon.ico" Click="Game_Load"
                             />
 
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="Sort" Width="148">
-                    <Fluent:Button Header="Ascending" Width="72" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
+                    <Fluent:Button Header="Ascending" Width="72" Icon="Windows\Icons\AscIcon.ico" Click="Button_Click_ASC"
                             />
-                    <Fluent:Button Header="Descending" Width="70" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
+                    <Fluent:Button Header="Descending" Width="70" Icon="Windows\Icons\DescIcon.ico" Click="Button_Click_DESC"
                             />
 
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="Add/Remove" Width="201">
-                    <Fluent:Button x:Name="Add_Button" Header="Add to orders" Width="65" IsEnabled="False" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\AddIcon.ico" Click="Add_Order"
+                    <Fluent:Button x:Name="Add_Button" Header="Add to orders" Width="65" IsEnabled="False" Icon="Windows\Icons\AddIcon.ico" Click="Add_Order"
                             />
-                    <Fluent:Button x:Name="Remove_Button" Header="Remove from Orders" Width="79" IsEnabled="False" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\RemoveIcon.ico" Click="Remove_Order"
+                    <Fluent:Button x:Name="Remove_Button" Header="Remove from Orders" Width="79" IsEnabled="False" Icon="Windows\Icons\RemoveIcon.ico" Click="Remove_Order"
                             />
-                    <Fluent:Button Header="Save" Width="55" Icon="C:\Users\madam\source\repos\ProjektSemestralny\Windows\Icons\SaveIcon.ico" Click="Save_Order"
+                    <Fluent:Button Header="Save" Width="55" Icon="Windows\Icons\SaveIcon.ico" Click="Save_Order"
                             />
 
                 </Fluent:RibbonGroupBox>

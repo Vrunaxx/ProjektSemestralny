@@ -26,7 +26,7 @@ namespace ProjektSemestralny
         {
             this.InitializeComponent();
             SetContext();
-            ObsvOrder = new ObservableCollection<Order>(PSDbContext.Orders); 
+            ObsvOrder = new ObservableCollection<Order>(PSDbContext.Orders);
             StockList.ItemsSource = ObsvOrder;
 
             foreach (var order in ObsvOrder)
@@ -35,7 +35,7 @@ namespace ProjektSemestralny
                 order.CollectionOfGames = new ObservableCollection<Game>(PSDbContext.GameProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Game));
                 order.CollectionOfMovies = new ObservableCollection<Movie>(PSDbContext.MovieProductIds.Where(bpi => bpi.Order.Id == order.Id).Select(s => s.Movie));
             }
-            
+
         }
         private void SetContext()
         {

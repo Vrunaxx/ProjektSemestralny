@@ -352,6 +352,7 @@ namespace ProjektSemestralny
             this.Visibility = Visibility.Hidden;
             manage.Show();
         }
+
         #region Selection changed
         private void StockList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

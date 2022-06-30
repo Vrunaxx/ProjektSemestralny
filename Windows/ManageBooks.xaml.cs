@@ -29,8 +29,8 @@ namespace ProjektSemestralny
             SetContext();
             ObsvOrders = new ObservableCollection<Book>(PSDbContextBooks.Books);
             BookList.ItemsSource = ObsvOrders;
-            
-            FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor"};
+
+            FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
 
         #region Filters
@@ -70,7 +70,7 @@ namespace ProjektSemestralny
             var FilterObj = obj as Book;
 
             return FilterObj.Category.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-        } 
+        }
         private bool AutorFilter(object obj)
         {
             var FilterObj = obj as Book;
@@ -155,7 +155,7 @@ namespace ProjektSemestralny
             }
 
             PSDbContextBooks.SaveChanges();
-            
+
         }
 
         private void BookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -201,7 +201,7 @@ namespace ProjektSemestralny
         private void Remove_Sort()
         {
             if (BookList.Items.SortDescriptions.Any())
-            BookList.Items.SortDescriptions.Remove(BookList.Items.SortDescriptions.First());
+                BookList.Items.SortDescriptions.Remove(BookList.Items.SortDescriptions.First());
         }
 
         private void Button_Click_ASC(object sender, RoutedEventArgs e)

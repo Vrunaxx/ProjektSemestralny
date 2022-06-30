@@ -33,6 +33,11 @@ namespace ProjektSemestralny
             FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
 
+        private void SetContext()
+        {
+            PSDbContextGames = new ProjektSemestralnyDbContext();
+        }
+
         #region Filters
         /// <summary>
         /// Decyduje o tym wg. jakiego pola będzie filtrowany podgląd
@@ -97,11 +102,7 @@ namespace ProjektSemestralny
 
         #endregion
 
-        private void SetContext()
-        {
-            PSDbContextGames = new ProjektSemestralnyDbContext();
-        }
-
+        #region Save/Remove
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             SetContext();
@@ -153,7 +154,7 @@ namespace ProjektSemestralny
             }
 
             PSDbContextGames.SaveChanges();
-            
+
         }
 
         private void GameList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -195,7 +196,9 @@ namespace ProjektSemestralny
                 MessageBox.Show("You have deleted an item");
             }
         }
+        #endregion
 
+        #region Sorting
         private void Remove_Sort()
         {
             if (GameList.Items.SortDescriptions.Any())
@@ -213,6 +216,7 @@ namespace ProjektSemestralny
             Remove_Sort();
             GameList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
         }
+        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

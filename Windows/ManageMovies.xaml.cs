@@ -32,6 +32,10 @@ namespace ProjektSemestralny
 
             FilterBy.ItemsSource = new string[] { "Title", "Category", "Autor" };
         }
+        private void SetContext()
+        {
+            PSDbContextMovies = new ProjektSemestralnyDbContext();
+        }
 
         #region Filters
         /// <summary>
@@ -97,11 +101,7 @@ namespace ProjektSemestralny
 
         #endregion
 
-        private void SetContext()
-        {
-            PSDbContextMovies = new ProjektSemestralnyDbContext();
-        }
-
+        #region Save/Remove
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             SetContext();
@@ -153,7 +153,7 @@ namespace ProjektSemestralny
             }
 
             PSDbContextMovies.SaveChanges();
-            
+
         }
 
         private void MovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -195,7 +195,9 @@ namespace ProjektSemestralny
                 MessageBox.Show("You have deleted an item");
             }
         }
+        #endregion
 
+        #region Sorting
         private void Remove_Sort()
         {
             if (MovieList.Items.SortDescriptions.Any())
@@ -213,6 +215,7 @@ namespace ProjektSemestralny
             Remove_Sort();
             MovieList.Items.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Descending));
         }
+        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

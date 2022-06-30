@@ -315,7 +315,7 @@ namespace ProjektSemestralny
         private void Save_Order(object sender, RoutedEventArgs e)
         {
             SetContext();
-            PSDbContext.Orders.Add(new Order { Id = order.Id, OrderDate = order.OrderDate, OrderId = PSDbContext.Orders.Max(o => o.OrderId) + 1 });
+            PSDbContext.Orders.Add(new Order { Id = order.Id, OrderDate = order.OrderDate, OrderId = (PSDbContext.Orders?.Max(o => o.OrderId) + 1 ?? 100001)});
             PSDbContext.SaveChanges();
             foreach (var book in order.CollectionOfBooks)
             {

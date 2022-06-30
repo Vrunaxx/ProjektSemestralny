@@ -149,10 +149,11 @@ namespace ProjektSemestralny
                 };
                 PSDbContextGames.Games.Add(game);
                 ObsvGames.Add(game);
+                MessageBox.Show("You have added an item");
             }
 
             PSDbContextGames.SaveChanges();
-            MessageBox.Show("You have added an item");
+            
         }
 
         private void GameList_SelectionChanged(object sender, SelectionChangedEventArgs e)

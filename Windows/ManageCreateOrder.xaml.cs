@@ -293,11 +293,19 @@ namespace ProjektSemestralny
                     break;
 
                 case ItemType.Game:
+                    if (OrderListGames.SelectedIndex > 0)
+                    {
+                        Remove_Button.IsEnabled = true;
+                    }
                     ObsvGames.First(b => b.Id == ((Game)StockList.SelectedItem).Id).StorageAmount++;
                     order.CollectionOfGames.Remove((Game)OrderListGames.SelectedItem);
                     break;
 
                 case ItemType.Movie:
+                    if (OrderListMovies.SelectedIndex > 0)
+                    {
+                        Remove_Button.IsEnabled = true;
+                    }
                     ObsvMovies.First(b => b.Id == ((Movie)StockList.SelectedItem).Id).StorageAmount++;
                     order.CollectionOfMovies.Remove((Movie)OrderListMovies.SelectedItem);
                     break;
@@ -344,5 +352,38 @@ namespace ProjektSemestralny
             this.Visibility = Visibility.Hidden;
             manage.Show();
         }
+        #region Selection changed
+        private void StockList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (StockList.SelectedIndex > -1)
+            {
+                Add_Button.IsEnabled = true;
+            }
+        }
+
+        private void OrderListBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (OrderListBooks.SelectedIndex > -1)
+            {
+                Remove_Button.IsEnabled = true;
+            }
+        }
+
+        private void OrderListMovies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (OrderListMovies.SelectedIndex > -1)
+            {
+                Remove_Button.IsEnabled = true;
+            }
+        }
+
+        private void OrderListGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (OrderListGames.SelectedIndex > -1)
+            {
+                Remove_Button.IsEnabled = true;
+            }
+        }
+        #endregion
     }
 }
